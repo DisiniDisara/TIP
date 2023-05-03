@@ -98,6 +98,7 @@ function process_applicant_details($first_detail=false) {
         
         check_stmt_status($stmt);
         // Store new user details as global variable
+        $_SESSION['userRole'] = 'applicant';
         $_SESSION['userID'] = $applicantID;
         $_SESSION['applicantID'] = $applicantID;
         $_SESSION['username'] = $username;
