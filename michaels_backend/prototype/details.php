@@ -44,7 +44,7 @@ HTML;
     ?>
     <?php
         $applicantID = $_SESSION['userID'];
-        $query = "SELECT * FROM applicant WHERE applicantID = '$applicantID' ";
+        $query = "SELECT * FROM systemUser WHERE userID = '$applicantID' ";
         $result = $mysqli->query($query);
         $row = $result->fetch_assoc();
     ?>
@@ -65,7 +65,7 @@ HTML;
         <input type="text" id="familyName" name="familyName" required maxlength="255" value="<?= "{$row['familyName']}" ?>"><br>
 
         <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="255" value="<?= "{$row['email']}" ?>"><br>
+        <input type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="255" value="<?= "{$row['username']}" ?>"><br>
 
         <label for="contactNo">Contact Number:</label>
         <input type="tel" id="contactNo" name="contactNo" required maxlength="10" value="<?= "{$row['contactNo']}" ?>"><br>

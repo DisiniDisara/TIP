@@ -75,7 +75,7 @@ EOD;
                     $classPreferences .= <<<TABLE
                         <tr class="preferences">
                             <td>{$data->classCode}</td>
-                            <td>{$data->classTimeslot}</td>
+                            <td>{$data->classStartTime} - {$data->classEndTime}</td>
                             <td><input type="number" name="preferences[]" value="{$prefLevel}"/></td>
                             <td>
                                 <input type="hidden" name="unitCode" value="{$unitCode}" />

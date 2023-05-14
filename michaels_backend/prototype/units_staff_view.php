@@ -52,7 +52,7 @@
             $unitName = $data->unitName;
 
             // Grab applicant preference for this unit
-            $sql = "SELECT DISTINCT applicantID, unitCode FROM preferences WHERE unitCode='$unitCode' ";
+            $sql = "SELECT DISTINCT userID, unitCode FROM preferences WHERE unitCode='$unitCode' ";
             $result_object = $mysqli->query($sql);
 
             // Get num of rows in result object

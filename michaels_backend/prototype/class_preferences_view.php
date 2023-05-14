@@ -31,7 +31,7 @@
         $unitCode = $_GET['unitCode'];
         $applicantID = $_GET['applicantID'];
         
-        $sql = "SELECT givenName, familyName FROM applicant WHERE applicantID='$applicantID'";
+        $sql = "SELECT givenName, familyName FROM systemUser WHERE userID='$applicantID'";
         $object = $mysqli->query($sql);
         $result = $object->fetch_object();
         $givenName = $result->givenName;
@@ -46,7 +46,7 @@
         while ($data = $classSessions->fetch_object()) {
             $class = $data->classCode;
             // Query the database to get the preferences for the particular class
-            $sql = "SELECT * FROM preferences WHERE classCode = '$class' AND applicantID = '$applicantID' ";
+            $sql = "SELECT * FROM preferences WHERE classCode = '$class' AND userID = '$applicantID' ";
 
             $preferences_results = $mysqli->query($sql);
             $prefLevel = "";
@@ -59,7 +59,7 @@
                 <tr>
                     <td>{$data->unitCode}</td>
                     <td>{$data->classCode}</td>
-                    <td>{$data->classTimeslot}</td>
+                    <td>{$data->classStartTime}-{$data->classEndTime}</td>
                     <td style='text-align: right;'><strong>{$prefLevel}</strong></td>
                 </tr>
 HTML;

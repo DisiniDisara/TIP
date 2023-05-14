@@ -44,11 +44,11 @@
         <tr>
             <td>
                 <b>Username:</b> <?= "{$row['username']}" ?><br>
-                <b>Applicant ID:</b> <?= "{$row['applicantID']}" ?><br>
+                <b>Applicant ID:</b> <?= "{$row['userID']}" ?><br>
                 <b>Title:</b> <?= "{$row['title']}" ?><br>
                 <b>Given Name:</b> <?= "{$row['givenName']}" ?><br>
                 <b>Family Name:</b> <?= "{$row['familyName']}" ?><br>
-                <b>Email:</b> <?= "{$row['email']}" ?><br>
+                <b>Email:</b> <?= "{$row['username']}" ?><br>
                 <b>Contact No:</b> <?= "{$row['contactNo']}" ?><br>
                 <b>Employment Status:</b> <?= "{$row['employmentStatus']}" ?><br>
                 <b>Citizenship:</b> <?= "{$row['citizenship']}" ?><br>

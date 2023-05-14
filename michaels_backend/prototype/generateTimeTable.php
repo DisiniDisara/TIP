@@ -36,9 +36,9 @@ function generateTimeTable(
         // $class_code = $row['class_code'];
         // $staff = $row['staff'];
 
-        $day = array_key_exists('day', $row) ? $row['day']: $row['day'];
-        $start_time = array_key_exists('start_time', $row) ? $row['start_time']: $row['startTime'];
-        $end_time = array_key_exists('end_time', $row) ? $row['end_time']: $row['endTime'];
+        $day = array_key_exists('classDay', $row) ? $row['classDay']: $row['day'];
+        $start_time = array_key_exists('classStartTime', $row) ? $row['classStartTime']: $row['startTime'];
+        $end_time = array_key_exists('classEndTime', $row) ? $row['classEndTime']: $row['endTime'];
         $class_name = array_key_exists('class_name', $row) ? $row['class_name']: $row['className'];
         $class_code = array_key_exists('class_code', $row) ? $row['class_code']: $row['classCode'];
         $staff = array_key_exists('staff', $row) ? $row['staff']: 'NA';

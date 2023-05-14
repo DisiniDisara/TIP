@@ -137,6 +137,14 @@ CREATE TABLE `preferences` (
   `prefLevel` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Dumping data for table `preferences`
+--
+
+INSERT INTO `preferences` (`userID`, `unitCode`, `classCode`, `prefCode`, `prefLevel`) VALUES
+(`10004`, `BIO102`, `BIO102_01`, `1`, `1`)
+
+
 -- --------------------------------------------------------
 
 --
@@ -282,7 +290,7 @@ ALTER TABLE `resume`
 -- Indexes for table `systemuser`
 --
 ALTER TABLE `systemuser`
-  ADD PRIMARY KEY (`userID`),
+  ADD PRIMARY KEY (`userID`, `username`),
   ADD KEY `username` (`username`);
 
 --

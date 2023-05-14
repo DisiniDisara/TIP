@@ -1,15 +1,6 @@
 <?php
 // Contains utility functions for the entire app
 
-function check_stmt_status($stmt) {
-    // Checks the status of sql query stmt
-    if ($stmt->execute() === TRUE) {
-        echo "New user detail record submitted successfully";
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-}
-
 function isLoggedIn(){
     if (isset($_SESSION['isLoggedIn']) and $_SESSION['isLoggedIn']===true){
         return true;
@@ -79,7 +70,7 @@ function process_applicant_details($first_detail=false) {
 
         $username = $_POST['username'];
         $password = $_POST['password'];
-        // Generate unique applicantID bu checking db
+        // Generate unique applicantID by checking db
         $applicantID = generate_applicantID();
         // Insertion query
         $sql_query = "INSERT INTO systemUser (userID, username, title, userRole, givenName, familyName, wholeAddress, employmentStatus, contractType, studentNo, contactNo, citizenship, indigenousStatus, hoursAvailable, dob, salary)
@@ -87,15 +78,14 @@ function process_applicant_details($first_detail=false) {
         '$contactNo', '$citizenship', '$indigenousStatus', '$hoursAvailable', 'dob_test', 'salary_test')";
         // Query the database
         $stmt = $mysqli->prepare($sql_query);
-        
+        $stmt->execute();
         echo "<p>$username, $password, $applicantID</p>";
-        $insert = "INSERT INTO login (userID, username, sPassword) VALUES ('$applicantID''$username', '$password')";
+        $insert = "INSERT INTO login (userID, username, sPassword) VALUES ('$applicantID','$email', '$password')";
         // Insert username and password
         mysqli_query($mysqli, $insert);
 
         
         
-        check_stmt_status($stmt);
         // Store new user details as global variable
         $_SESSION['userRole'] = 'applicant';
         $_SESSION['userID'] = $applicantID;
@@ -109,10 +99,9 @@ function process_applicant_details($first_detail=false) {
         // Connect to db
         require 'connections.php';
 
-        // If applicantID is set, update existing record [^] Needs to be updated with proper variables for all fields once that's finalized
+        // If applicantID is set, update existing record [^] Small Bug displaying user details, if you update it it doesnt change due to sessionID stuff Needs to be updated with proper variables for all fields once that's finalized
         $sql_query = "UPDATE systemUser SET 
             title = '$title', 
-            email = '$email', 
             givenName = '$givenName', 
             familyName = '$familyName', 
             employmentStatus = '$employmentStatus', 
@@ -124,7 +113,6 @@ function process_applicant_details($first_detail=false) {
             WHERE userID = '$applicantID'";
 
         $stmt = $mysqli->prepare($sql_query);
-        check_stmt_status($stmt);        
     }
 
   //process_applicant_resume();
@@ -155,16 +143,16 @@ function process_applicant_preferences(){
             if ($prefLevel > 0){ // Only add prefLevel to classCdoe with prefLevel to avoid NULL
 
                 // Check if the row already exists
-                $sql = "SELECT COUNT(*) FROM preferences WHERE applicantID='$applicantID' AND classCode='$classCode'";
+                $sql = "SELECT COUNT(*) FROM preferences WHERE userID='$applicantID' AND classCode='$classCode'";
                 $result = $mysqli->query($sql);
                 $count = $result->fetch_row()[0];
     
                 if ($count > 0) {
                     // If the row exists, update the prefLevel
-                    $sql = "UPDATE preferences SET prefLevel='$prefLevel' WHERE applicantID='$applicantID' AND prefCode='$classCode'";
+                    $sql = "UPDATE preferences SET prefLevel='$prefLevel' WHERE userID='$applicantID' AND prefCode='$classCode'";
                 } else {
                     // If the row does not exist, insert a new row
-                    $sql = "INSERT INTO preferences (applicantID, unitCode, classCode, prefCode, prefLevel) VALUES ('$applicantID', '$unitCode', '$classCode', '$classCode', '$prefLevel')";
+                    $sql = "INSERT INTO preferences (userID, unitCode, classCode, prefCode, prefLevel) VALUES ('$applicantID', '$unitCode', '$classCode', '$classCode', '$prefLevel')";
                 }
                 $result = $mysqli->query($sql);
                 if (!$result) {
