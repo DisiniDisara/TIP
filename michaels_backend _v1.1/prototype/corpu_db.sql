@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2023 at 06:45 AM
+-- Generation Time: May 16, 2023 at 05:35 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `appliesfor` (
-  `userID` varchar(10) NOT NULL,
+  `userID` varchar(20) NOT NULL,
   `unitCode` varchar(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -41,7 +41,8 @@ CREATE TABLE `appliesfor` (
 CREATE TABLE `availability` (
   `userID` varchar(10) NOT NULL,
   `a_day` varchar(255) NOT NULL,
-  `a_time` varchar(255) NOT NULL,
+  `a_startTime` varchar(100) NOT NULL,
+  `a_endTime` varchar(100) NOT NULL,
   `availabilityType` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -60,23 +61,24 @@ CREATE TABLE `class` (
   `classDay` varchar(255) DEFAULT NULL,
   `class_description` varchar(10000) DEFAULT NULL,
   `unitCode` varchar(20) DEFAULT NULL,
-  `userID` varchar(10) DEFAULT NULL
+  `userID` varchar(10) DEFAULT NULL,
+  `classroom` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `class`
 --
 
-INSERT INTO `class` (`classCode`, `className`, `classType`, `classStartTime`, `classEndTime`, `classDay`, `class_description`, `unitCode`, `userID`) VALUES
-('BIO102_01', 'BIO102_01', 'Lab', '09:00', '10:00', 'Wednesday', 'Test 4', 'BIO102', NULL),
-('BIO102_02', 'BIO102_02', 'Lab', '09:00', '10:00', 'Thursday', 'Test 5', 'BIO102', NULL),
-('BIO102_03', 'BIO102_03', 'Lab', '16:00', '17:00', 'Friday', 'Test 6', 'BIO102', NULL),
-('CHEM101_01', 'CHEM101_01', 'Tutorial', '09:00', '10:00', 'Monday', 'Test 7', 'CHEM101', NULL),
-('CHEM101_02', 'CHEM101_02', 'Tutorial', '09:00', '10:00', 'Tuesday', 'Test 8', 'CHEM101', NULL),
-('CHEM101_03', 'CHEM101_03', 'Tutorial', '16:00', '17:00', 'Wednesday', 'Test 9', 'CHEM101', NULL),
-('ENG101_01', 'ENG101_01', 'Lab', '09:00', '10:00', 'Monday', 'Test 1', 'ENG101', NULL),
-('ENG101_02', 'ENG101_02', 'Lab', '10:00', '12:00', 'Tuesday', 'Test 2', 'ENG101', NULL),
-('ENG101_03', 'ENG101_03', 'Lab', '14:00', ' 15:00', 'Wednesday', 'Test 3', 'ENG101', NULL);
+INSERT INTO `class` (`classCode`, `className`, `classType`, `classStartTime`, `classEndTime`, `classDay`, `class_description`, `unitCode`, `userID`, `classroom`) VALUES
+('BIO102_01', 'BIO102_01', 'Lab', '09:00', '10:00', 'Wednesday', 'Test 4', 'BIO102', NULL, ''),
+('BIO102_02', 'BIO102_02', 'Lab', '09:00', '10:00', 'Thursday', 'Test 5', 'BIO102', NULL, ''),
+('BIO102_03', 'BIO102_03', 'Lab', '16:00', '17:00', 'Friday', 'Test 6', 'BIO102', NULL, ''),
+('CHEM101_01', 'CHEM101_01', 'Tutorial', '09:00', '10:00', 'Monday', 'Test 7', 'CHEM101', NULL, ''),
+('CHEM101_02', 'CHEM101_02', 'Tutorial', '09:00', '10:00', 'Tuesday', 'Test 8', 'CHEM101', NULL, ''),
+('CHEM101_03', 'CHEM101_03', 'Tutorial', '16:00', '17:00', 'Wednesday', 'Test 9', 'CHEM101', NULL, ''),
+('ENG101_01', 'ENG101_01', 'Lab', '09:00', '10:00', 'Monday', 'Test 1', 'ENG101', NULL, ''),
+('ENG101_02', 'ENG101_02', 'Lab', '10:00', '12:00', 'Tuesday', 'Test 2', 'ENG101', NULL, ''),
+('ENG101_03', 'ENG101_03', 'Lab', '14:00', ' 15:00', 'Wednesday', 'Test 3', 'ENG101', NULL, '');
 
 -- --------------------------------------------------------
 
@@ -121,7 +123,14 @@ INSERT INTO `login` (`userID`, `username`, `sPassword`) VALUES
 ('10002', 'john.doe@gmail.com', 'pass'),
 ('10003', 'sara.jones@gmail.com', 'pass'),
 ('10004', 'jack.smith@gmail.com', 'pass'),
-('10005', 'jane.doe@gmail.com', 'pass');
+('10005', 'jane.doe@gmail.com', 'pass'),
+('S090340897', 'keven@gmail.com', 'pass'),
+('S095919464', 'masd@gmail.com', 'pass'),
+('S276286160', 'mills@gmail.com', 'pass'),
+('S538610296', 'hippo@gmail.com', 'pass'),
+('S586797134', 'mills@gmail.com', 'pass'),
+('S860033399', 'hippo@gmail.com', 'pass'),
+('S938892456', 'hippo@gmail.com', 'pass');
 
 -- --------------------------------------------------------
 
@@ -131,8 +140,8 @@ INSERT INTO `login` (`userID`, `username`, `sPassword`) VALUES
 
 CREATE TABLE `preferences` (
   `userID` varchar(10) NOT NULL,
-  `unitCode` varchar(6) NOT NULL,
-  `classCode` varchar(10) NOT NULL,
+  `unitCode` varchar(20) NOT NULL,
+  `classCode` varchar(20) NOT NULL,
   `prefCode` varchar(10) NOT NULL,
   `prefLevel` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -142,8 +151,9 @@ CREATE TABLE `preferences` (
 --
 
 INSERT INTO `preferences` (`userID`, `unitCode`, `classCode`, `prefCode`, `prefLevel`) VALUES
-(`10004`, `BIO102`, `BIO102_01`, `1`, `1`)
-
+('S095919464', 'BIO102', 'BIO102_01', 'BIO102_01', 1),
+('S095919464', 'BIO102', 'BIO102_02', 'BIO102_02', 3),
+('S095919464', 'BIO102', 'BIO102_03', 'BIO102_03', 2);
 
 -- --------------------------------------------------------
 
@@ -190,19 +200,27 @@ CREATE TABLE `systemuser` (
   `hoursAvailable` int(11) NOT NULL,
   `dob` varchar(45) NOT NULL,
   `salary` varchar(255) DEFAULT NULL,
-  `wholeAddress` varchar(255) DEFAULT NULL
+  `wholeAddress` varchar(255) DEFAULT NULL,
+  `gender` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `systemuser`
 --
 
-INSERT INTO `systemuser` (`userID`, `username`, `title`, `userRole`, `givenName`, `familyName`, `employmentStatus`, `contractType`, `studentNo`, `contactNo`, `citizenship`, `indigenousStatus`, `hoursAvailable`, `dob`, `salary`, `wholeAddress`) VALUES
-('10001', 'jane.smith@gmail.com', 'Ms.', 'staff', 'Jane', 'Smith', 'active', 'Full-time', NULL, 444444444, 'AUS', 'Non-Indigenous', 40, '1990-05-01', '85000', '123 Main St, Anytown USA'),
-('10002', 'john.doe@gmail.com', 'Mr.', 'staff', 'John', 'Doe', 'active', 'Full-time', NULL, 433333333, 'AUS', 'Non-Indigenous', 40, '1985-10-15', '90000', '456 Oak St, Anytown USA'),
-('10003', 'sara.jones@gmail.com', 'Dr.', 'staff', 'Sara', 'Jones', 'active', 'Casual', NULL, 422222222, 'AUS', 'Non-Indigenous', 20, '1988-01-20', '40000', '789 Pine St, Anytown USA'),
-('10004', 'jack.smith@gmail.com', 'Mr.', 'applicant', 'Jack', 'Smith', 'inactive', NULL, '0411111111', 555, 'AUS', 'Non-Indigenous', 0, '1995-03-10', NULL, '234 Elm St, Anytown USA'),
-('10005', 'jane.doe@gmail.com', 'Ms.', 'applicant', 'Jane', 'Doe', 'inactive', NULL, '0400000000', 555, 'AUS', 'Indigenous', 0, '1998-12-25', NULL, '567 Maple St, Anytown USA');
+INSERT INTO `systemuser` (`userID`, `username`, `title`, `userRole`, `givenName`, `familyName`, `employmentStatus`, `contractType`, `studentNo`, `contactNo`, `citizenship`, `indigenousStatus`, `hoursAvailable`, `dob`, `salary`, `wholeAddress`, `gender`) VALUES
+('10001', 'jane.smith@gmail.com', 'Ms.', 'staff', 'Jane', 'Smith', 'active', 'Full-time', NULL, 444444444, 'AUS', 'Non-Indigenous', 40, '1990-05-01', '85000', '123 Main St, Anytown USA', ''),
+('10002', 'john.doe@gmail.com', 'Mr.', 'staff', 'John', 'Doe', 'active', 'Full-time', NULL, 433333333, 'AUS', 'Non-Indigenous', 40, '1985-10-15', '90000', '456 Oak St, Anytown USA', ''),
+('10003', 'sara.jones@gmail.com', 'Dr.', 'staff', 'Sara', 'Jones', 'active', 'Casual', NULL, 422222222, 'AUS', 'Non-Indigenous', 20, '1988-01-20', '40000', '789 Pine St, Anytown USA', ''),
+('10004', 'jack.smith@gmail.com', 'Mr.', 'applicant', 'Jack', 'Smith', 'inactive', NULL, '0411111111', 555, 'AUS', 'Non-Indigenous', 0, '1995-03-10', NULL, '234 Elm St, Anytown USA', ''),
+('10005', 'jane.doe@gmail.com', 'Ms.', 'applicant', 'Jane', 'Doe', 'inactive', NULL, '0400000000', 555, 'AUS', 'Indigenous', 0, '1998-12-25', NULL, '567 Maple St, Anytown USA', ''),
+('S090340897', 'keven@gmail.com', 'Mr', 'applicant', 'Moonman', 'asd', 'inactive', NULL, NULL, 444444444, 'asd', 'asd', 22, 'dob_test', 'salary_test', 'address_test', ''),
+('S095919464', 'masd@gmail.com', 'Mr', 'applicant', 'Moonman', 'asd', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', ''),
+('S276286160', 'mills@gmail.com', 'Mrs', 'applicant', 'millsm', 'mills', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', ''),
+('S538610296', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', ''),
+('S586797134', 'mills@gmail.com', 'Mrs', 'applicant', 'millsm', 'mills', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', ''),
+('S860033399', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', ''),
+('S938892456', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', '');
 
 -- --------------------------------------------------------
 
@@ -214,7 +232,7 @@ CREATE TABLE `unit` (
   `unitCode` varchar(20) NOT NULL,
   `unitName` varchar(255) NOT NULL,
   `vacancyStatus` varchar(255) DEFAULT NULL,
-  `courseCode` varchar(8) NOT NULL,
+  `courseCode` varchar(20) NOT NULL,
   `unit_description` varchar(10000) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -242,7 +260,7 @@ ALTER TABLE `appliesfor`
 -- Indexes for table `availability`
 --
 ALTER TABLE `availability`
-  ADD PRIMARY KEY (`userID`,`a_day`,`a_time`);
+  ADD PRIMARY KEY (`userID`,`a_day`,`a_startTime`,`a_endTime`);
 
 --
 -- Indexes for table `class`
@@ -290,7 +308,7 @@ ALTER TABLE `resume`
 -- Indexes for table `systemuser`
 --
 ALTER TABLE `systemuser`
-  ADD PRIMARY KEY (`userID`, `username`),
+  ADD PRIMARY KEY (`userID`),
   ADD KEY `username` (`username`);
 
 --
