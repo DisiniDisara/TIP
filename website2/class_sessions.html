@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> 
+ <link rel="stylesheet" href="class_sessions.css">
+  <title>Table Example</title>
+</head>
+<body>
+    <div class="container mx-auto my-5">
+        <h3 class="text-center">Add Class Preferences</h3>
+    
+        <div class="d-flex align-items-center align-self-center" style="height: 20em;">
+            <div class="container-fluid d-flex justify-content-center">
+        <div class="card p-4 border-light">
+  <table>
+    <tr>
+      <th>Unit</th>
+      <th>Class Code</th>
+      <th>Timeslot</th>
+      <th>Preference</th>
+    </tr>
+    <tr>
+      <td>Row 1, Column 1</td>
+      <td>Row 1, Column 2</td>
+      <td>Row 1, Column 3</td>
+      <td><select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+    </tr>
+    <tr>
+      <td>Row 2, Column 1</td>
+      <td>Row 2, Column 2</td>
+      <td>Row 2, Column 3</td>
+      <td><select>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select></td>
+    </tr>
+    <tr>
+        <td>Row 3, Column 1 </td>
+        <td>Row 3, Column 2</td>
+        <td>Row 3, Column 3</td>
+        <td><select>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select></td>
+      </tr>
+    </div>
+  </table>
+  <div class="form-group">
+    <button type="submit" class="btn  btn-primary">Submit</button>
+    <input type="hidden" name="unitCode" value="<?php echo $unitCode; ?>" />
+    <button class="btn btn-primary">Cancel</button>
+    </div>
+</div>
+</body>
+</html>
