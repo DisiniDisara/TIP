@@ -18,12 +18,22 @@
   .container {
     position: absolute;
     max-width: 800px;
-    height: 700px;
+    height: 400px;
     margin: auto;
-    top: 60.5%;
+    top: 50.5%;
     left: 50%;
     transform: translate(-50%, -50%);
   } 
+  .container2 {
+    position: absolute;
+    max-width: 1500px;
+    height: 900px;
+    margin: auto;
+    top: 50.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } 
+
   .myRightCtn {
     position: relative;
     background-image: linear-gradient(30deg, #482F72, #722F37);

@@ -1,0 +1,123 @@
+<!--Edit Class Preference -->
+<!-- <?php
+session_start();
+require 'connections.php';
+
+require_once('utilities.php');
+// Insert submitted preference form to db.
+process_applicant_preferences();
+?> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> 
+
+    <!-- <?php
+        $unitCode = $_REQUEST['unitCode'];
+        $applicantID = $_SESSION['applicantID'];
+        echo <<<EOD
+        <title>Class Preferences for {$unitCode}</title>             
+EOD;
+    ?> -->
+</head>
+<body>
+    <!-- <?php
+    // Include the file containing the generateNav() function
+    include 'generateNav.php';
+
+    // Generate the navigation menu
+    $nav = generateNav();
+    echo $nav;
+    ?> -->
+    <div class="container mx-auto my-5">
+        <h3 class="text-center">Add Class Preferences</h3>
+</div>
+<div class="d-flex align-items-center align-self-center" style="height: 20em;">
+    <div class="container-fluid d-flex justify-content-center">
+<div class="card p-4 border-light">
+    <!-- <?php
+        require 'connections.php';
+
+        // Get the unit code from the URL parameters
+        $unitCode = $_REQUEST['unitCode'];
+        $applicantID = $_SESSION['applicantID'];
+
+        // Query the database to get the class sessions for the unit
+        $sql = "SELECT * FROM class WHERE unitCode = '$unitCode' ";
+        $class_sessions_results = $mysqli->query($sql);
+
+        if (!$class_sessions_results) {
+            echo "Error: Our query failed to execute and here is why: " . PHP_EOL;
+            echo "Query: " . $sql . PHP_EOL;
+            echo "Errno: " . $mysqli->errno . PHP_EOL;
+            echo "Error: " . $mysqli->error . PHP_EOL;
+            exit;
+        } else {
+            $classPreferences = '';
+
+            // To-Do: Check if user has preference and fill in form, else show empty form
+
+            while ($data = $class_sessions_results->fetch_object()) {
+                // For table positioning
+                $classCode = $data->classCode;
+
+                // Get the preference for this class session
+                $sql = "SELECT * FROM preferences WHERE preferences.classCode = '$classCode' and preferences.applicantID = '$applicantID' ";
+                $preferences_results = $mysqli->query($sql);
+                $prefLevel = '';
+                if ($preferences_results->num_rows > 0) {
+                    $prefLevel = $preferences_results->fetch_object()->prefLevel;
+                }
+           
+                $classPreferences .= <<<TABLE
+                    <tr class="preferences">
+                        <td>{$data->unitCode}</td>
+                        <td>{$data->classCode}</td>
+                        <td>{$data->classTimeslot}</td> -->
+                        <td><input type="number" min="1" max="5" name="preferences[]" value="{$prefLevel}" required="true" /></td>
+                        <td>
+                            <input type="hidden" name="unitCode" value="{$unitCode}" />
+                            <input type="hidden" name="classCode[]" value="{$classCode}" />
+                        </td>
+                    </tr>
+<!-- TABLE; -->
+            <!-- }
+        } -->
+<!-- 
+    ?> -->
+
+    <!-- <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?submit=1&applicantID=<?php echo $applicantID;?>&edit=0" method="post"> -->
+        
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Unit</th>
+                        <th>Class Code</th>
+                        <th>Timeslot</th>
+                        <th>Preference</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <?php echo $classPreferences;?> -->
+                </tbody>
+            </table>
+            <div class="form-group">
+            <button type="submit" class="btn  btn-primary">Submit</button>
+            <input type="hidden" name="unitCode" value="<?php echo $unitCode; ?>" />
+            <button class="btn btn-primary">Cancel</button>
+            </div>
+            <!-- To do - implement clear all -->
+    </form>
+    
+    </div>
+    </div>
+    </div>
+<!-- <?php include "footer.inc"?> -->
+</body>
+</html>
