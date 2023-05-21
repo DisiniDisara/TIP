@@ -29,10 +29,11 @@ function generateTimeTable(
 
     // Iterate over the result and fill in the timetable 2D array
     while ($row = mysqli_fetch_assoc($result)) {
-
-        $day = array_key_exists('day', $row) ? $row['day']: $row['day'];
-        $start_time = array_key_exists('start_time', $row) ? $row['start_time']: $row['startTime'];
-        $end_time = array_key_exists('end_time', $row) ? $row['end_time']: $row['endTime'];
+        
+        $classType = array_key_exists('classtype', $row) ? $row['class_type']: $row['classType'];
+        $day = array_key_exists('day', $row) ? $row['day']: $row['classDay'];
+        $start_time = array_key_exists('start_time', $row) ? $row['start_time']: $row['classStartTime'];
+        $end_time = array_key_exists('end_time', $row) ? $row['end_time']: $row['classEndTime'];
         $class_name = array_key_exists('class_name', $row) ? $row['class_name']: $row['className'];
         $class_code = array_key_exists('class_code', $row) ? $row['class_code']: $row['classCode'];
         $unit_code = array_key_exists('unit_code', $row) ? $row['unit_code']: $row['unitCode'];
