@@ -73,14 +73,14 @@ function process_applicant_details($first_detail=false) {
         // Generate unique applicantID by checking db
         $applicantID = generate_applicantID();
         // Insertion query
-        $sql_query = "INSERT INTO systemUser (userID, username, title, userRole, givenName, familyName, wholeAddress, employmentStatus, contractType, studentNo, contactNo, citizenship, indigenousStatus, hoursAvailable, dob, salary)
-        VALUES ('$applicantID', '$email', '$title', 'applicant', '$givenName', '$familyName','address_test', 'inactive', NULL, NULL,
-        '$contactNo', '$citizenship', '$indigenousStatus', '$hoursAvailable', 'dob_test', 'salary_test')";
+        $sql_query = "INSERT INTO systemUser (userID, username, title, userRole, givenName, familyName, wholeAddress, employmentStatus, contractType, studentNo, contactNo, citizenship, indigenousStatus, hoursAvailable, dob, salary, gender)
+        VALUES ('$applicantID', '$username', '$title', 'applicant', '$givenName', '$familyName','address_test', 'inactive', NULL, NULL,
+        '$contactNo', '$citizenship', '$indigenousStatus', '$hoursAvailable', 'dob_test', 'salary_test', 'gender')";
         // Query the database
         $stmt = $mysqli->prepare($sql_query);
         $stmt->execute();
         echo "<p>Added into systemUser $username, $password, $applicantID</p>";
-        $insert = "INSERT INTO login (userID, username, sPassword) VALUES ('$applicantID','$email', '$password')";
+        $insert = "INSERT INTO login (userID, username, sPassword) VALUES ('$applicantID','$username', '$password')";
         // Insert username and password
         mysqli_query($mysqli, $insert);
 
