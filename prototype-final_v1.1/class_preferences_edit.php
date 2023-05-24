@@ -108,10 +108,14 @@ TABLE;
                             <div class="container-fluid d-flex justify-content-center">                                
                                 <button class="btn butt_out m-2" type="submit">Submit</button>
                                 <input type="hidden" name="unitCode" value="<?php echo $unitCode; ?>" />
-                                <button class="btn butt_out m-2" onclick="window.location.href='units.php' ">Cancel</button>
-                                <button class="btn butt_out m-2" onclick="window.location.href='clear_preferences.php?applicantID=<?php echo $applicantID;?>&unitCode=<?php echo $unitCode;?>' ">Clear All</button>
+<!--                                 <button class="btn butt_out m-2" onclick="window.location.href='units.php' ">Cancel</button>
+                                <button class="btn butt_out m-2" onclick="window.location.href='clear_preferences.php?applicantID=<?php echo $applicantID;?>&unitCode=<?php echo $unitCode;?>' ">Clear All</button> -->
                             </div>
                         </form>
+                        <div class="container-fluid d-flex justify-content-end" style="margin-top: -65px;"> 
+                            <button class="btn butt_out m-2" onclick="window.location.href='units.php' ">Cancel</button>
+                            <button class="btn butt_out m-2" onclick="window.location.href='clear_preferences.php?applicantID=<?php echo $applicantID;?>&unitCode=<?php echo $unitCode;?>' ">Clear All</button>
+                        </div>
                         <?php
     // Display message if passwords entered dont match
     if (isset($_GET['error']) && $_GET['error'] == 1) {
