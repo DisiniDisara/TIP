@@ -47,7 +47,7 @@
                             ?>
                             <div class="form-group">
                                 <i class="fas fa-envelope"></i>
-                                <input class="myInput" placeholder="Username" type="text" id="username" name="username" required>
+                                <input class="myInput" placeholder="Email" type="text" id="username" name="username" required>
                             </div>
 
                             <div class="form-group">
