@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
-    <link rel="stylesheet" href="style/signup.css">
+    <link rel="stylesheet" href="style/account.css">
 <title>Details</title>
 </head>
 <body>
@@ -38,6 +38,7 @@
     // echo $nav;   Not required for this page?
     ?>
 
+    <div class="container">
     <div class="myCard" style=" top: 50.5%;">
         <div class="row">
             <div class="col-md-6">
