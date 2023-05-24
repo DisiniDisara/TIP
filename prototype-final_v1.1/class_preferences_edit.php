@@ -101,21 +101,17 @@ TABLE;
         <div class="d-flex align-items-center align-self-center">
             <div class="container-fluid d-flex justify-content-center">
                 <div class="card p-4 border-light">
-                        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?submit=1&applicantID=<?php echo $applicantID;?>&edit=0" method="post">
-                            <h3 class="text-center mb-5">Add Class Preferences for <?php echo $unitCode;?></h3>
-                            <?php echo $TIMETABLE;?>
+                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>?submit=1&applicantID=<?php echo $applicantID;?>&edit=0" method="post">
+                        <h3 class="text-center mb-5">Add Class Preferences for <?php echo $unitCode;?></h3>
+                        <?php echo $TIMETABLE;?>
 
-                            <div class="container-fluid d-flex justify-content-center">                                
-                                <button class="btn butt_out m-2" type="submit">Submit</button>
-                                <input type="hidden" name="unitCode" value="<?php echo $unitCode; ?>" />
-<!--                                 <button class="btn butt_out m-2" onclick="window.location.href='units.php' ">Cancel</button>
-                                <button class="btn butt_out m-2" onclick="window.location.href='clear_preferences.php?applicantID=<?php echo $applicantID;?>&unitCode=<?php echo $unitCode;?>' ">Clear All</button> -->
-                            </div>
-                        </form>
-                        <div class="container-fluid d-flex justify-content-end" style="margin-top: -65px;"> 
-                            <button class="btn butt_out m-2" onclick="window.location.href='units.php' ">Cancel</button>
-                            <button class="btn butt_out m-2" onclick="window.location.href='clear_preferences.php?applicantID=<?php echo $applicantID;?>&unitCode=<?php echo $unitCode;?>' ">Clear All</button>
+                        <div class="container-fluid d-flex justify-content-center">                                
+                            <button class="btn butt_out m-2" type="submit">Submit</button>
+                            <input type="hidden" name="unitCode" value="<?php echo $unitCode; ?>" />
+                            <a class="btn butt_out m-2" href="units.php">Cancel</a>
+                            <a class="btn butt_out m-2" href="clear_preferences.php?applicantID=<?php echo $applicantID;?>&unitCode=<?php echo $unitCode;?>">Clear All</a>
                         </div>
+                    </form>
                         <?php
     // Display message if passwords entered dont match
     if (isset($_GET['error']) && $_GET['error'] == 1) {
