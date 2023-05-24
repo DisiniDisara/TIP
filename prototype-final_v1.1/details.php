@@ -33,7 +33,7 @@
     echo $nav;
     ?>
     
-<div class="container" style="border-radius:50px;margin-bottom: 20px;">
+<div class="container" >
         <div class="d-flex align-items-center align-self-center">
             <div class="container-fluid d-flex justify-content-center">
                 <div class="card p-4 border-light">
@@ -54,7 +54,7 @@ HTML;
    
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <label for="title">Title:</label>
-        <select style="margin-left:105px;" id="title" name="title" required>
+        <select style="margin-left:107px;" id="title" name="title" required>
             <option value="">--Please select--</option>
             <option value="Mr" <?php if ($row['title'] === 'Mr') {echo 'selected';}?>>Mr</option>
             <option value="Mrs" <?php if ($row['title'] === 'Mrs') {echo 'selected';}?>>Mrs</option>
