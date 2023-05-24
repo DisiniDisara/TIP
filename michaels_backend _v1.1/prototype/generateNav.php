@@ -18,6 +18,8 @@
                 <li><a href="units.php">Units Available</a></li>
                 <li><a href="profile.php">Profile</a></li>
                 <li><a href="timetable.php">Timetable</a></li>
+                <li><a href="availability.php">Availability</a></li>
+
 
 HTML;
             }

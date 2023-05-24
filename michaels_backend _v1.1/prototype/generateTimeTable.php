@@ -447,6 +447,95 @@ HTML;
 
     return $TIMETABLE;
 }
+function generateAvailabilityTable(
+    // BUGS: Needs a check that Start Time comes Before End Time in array - JS?
 
+    $applicantID,
+    $result,
+    $result2,
+    $edit = false,
+    $mainColor = NULL,
+) {
 
+    // Args
+    // $applicantID: string of applicant id to query db for their previous preferences
+    // result1: mysqli object after querying for the availability with: a_day, , a_startTime, a_endTime, availabilityType 
+    // result2: mysqli object to query and get distinct class names 
+    // Return: HTML table class sessions with user input for preference
+
+    require 'connections.php';
+
+    // The 2D array containing times, days, and class info.
+    $timetable = generateTimeTableTemplateArray();
+
+    // Iterate over the result and fill in the timetable 2D array
+    while ($row = mysqli_fetch_assoc($result)) {
+
+        $a_day = array_key_exists('a_day', $row) ? $row['a_day'] : $row['a_day'];
+        $a_startTime = array_key_exists('a_startTime', $row) ? $row['a_startTime'] : $row['a_startTime'];
+        $a_endTime = array_key_exists('a_endTime', $row) ? $row['a_endTime'] : $row['a_endTime'];
+        $availabilityType = array_key_exists('availabilityType', $row) ? $row['availabilityType'] : $row['availabilityType'];
+
+        // Grab a color for availability depending on type shown in row
+
+        if (($availabilityType) == "available") {
+            $color = 'dodgerblue';
+            $start_info = "<div class='class-block' style='background-color: $color; padding:0; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Available</div>";
+
+        } else {
+            $color = 'tomato';
+            $start_info = "<div class='class-block' style='background-color: $color; padding:0; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Unavailable</div>";
+        }
+
+        $middle_info = "<div class='class-block' style='background-color: $color; color: $color; padding:0; margin:0; height:100%;'>' '</div>";
+        $end_info = "<div class='class-block' style='background-color: $color; color: $color; padding: 0; margin:0; height: 100%;'>' '</div>";
+
+        // Time blocks from sart to end times, inclusively
+        $times = getStartToEndTimes($a_startTime, $a_endTime);
+
+        // Number of time slots
+        $n_times = count($times) - 1;
+
+        // Add html to timetable array based on the time block type
+        foreach ($times as $i => $time) {
+            if ($i == 0) {
+                $timetable[$time][$a_day] = $start_info;
+            }
+            if ($i > 0 and $i < ($n_times + 1)) {
+                $timetable[$time][$a_day] = $middle_info;
+            }
+            if ($i == ($n_times -1)) {
+                $timetable[$time][$a_day] = $end_info;
+            }
+        }
+        ;
+
+    }
+    $TIMETABLE = '';
+
+    // Days for the timetable header
+    $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+
+    // Start of generating timetable html
+    $TIMETABLE .= "<table style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
+        "<tr><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
+
+    // Add day in header
+    foreach ($days as $day) {
+        $TIMETABLE .= "<th style='text-align: center; border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>$day</th>";
+    }
+
+    // Go through timetable array and add info to td tag
+    foreach ($timetable as $row) {
+        $TIMETABLE .= "<tr>";
+        foreach ($row as $cell) {
+
+            $TIMETABLE .= "<td style='border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>" . $cell . "</td>";
+        }
+        $TIMETABLE .= "</tr>";
+    }
+    $TIMETABLE .= "</table>";
+
+    return $TIMETABLE;
+}
 ?>

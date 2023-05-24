@@ -74,6 +74,12 @@ TABLE;
 
         $TIMETABLE = generateTimeTable($result, $result2);
         
+        $query3 = "SELECT unit_description FROM unit WHERE unitCode ='$unitCode'";
+        $unitDescription = $mysqli->query($query3);
+
+        if ($row = mysqli_fetch_assoc($unitDescription)){
+            $unitDetails = array_key_exists('unit_description', $row) ? $row['unit_description'] : $row['unit_description'];
+        } else {
         $unitDetails = <<<HTML
         <div>
             <p>
@@ -82,9 +88,9 @@ TABLE;
             of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap <br>
             into electronic typesetting, remaining essentially un
             </p>
-        </div>
+        </div> 
         
-HTML;
+HTML; }
 
 //////////// Show classes with only time table
 //         echo <<<EOD

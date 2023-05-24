@@ -70,15 +70,16 @@ CREATE TABLE `class` (
 --
 
 INSERT INTO `class` (`classCode`, `className`, `classType`, `classStartTime`, `classEndTime`, `classDay`, `class_description`, `unitCode`, `userID`, `classroom`) VALUES
-('BIO102_01', 'BIO102_01', 'Lab', '09:00', '10:00', 'Wednesday', 'Test 4', 'BIO102', NULL, ''),
-('BIO102_02', 'BIO102_02', 'Lab', '09:00', '10:00', 'Thursday', 'Test 5', 'BIO102', NULL, ''),
-('BIO102_03', 'BIO102_03', 'Lab', '16:00', '17:00', 'Friday', 'Test 6', 'BIO102', NULL, ''),
-('CHEM101_01', 'CHEM101_01', 'Tutorial', '09:00', '10:00', 'Monday', 'Test 7', 'CHEM101', NULL, ''),
-('CHEM101_02', 'CHEM101_02', 'Tutorial', '09:00', '10:00', 'Tuesday', 'Test 8', 'CHEM101', NULL, ''),
-('CHEM101_03', 'CHEM101_03', 'Tutorial', '16:00', '17:00', 'Wednesday', 'Test 9', 'CHEM101', NULL, ''),
-('ENG101_01', 'ENG101_01', 'Lab', '09:00', '10:00', 'Monday', 'Test 1', 'ENG101', NULL, ''),
-('ENG101_02', 'ENG101_02', 'Lab', '10:00', '12:00', 'Tuesday', 'Test 2', 'ENG101', NULL, ''),
-('ENG101_03', 'ENG101_03', 'Lab', '14:00', ' 15:00', 'Wednesday', 'Test 3', 'ENG101', NULL, '');
+('BIO102_01', 'BIO102_01', 'Lab', '09:00', '10:00', 'Wednesday', 'This introductory course to BioChemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice dissections, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'BIO102', NULL, 'HMST'),
+('BIO102_02', 'BIO102_02', 'Lab', '09:00', '10:00', 'Thursday', 'This introductory course to BioChemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice dissections, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'BIO102', NULL, 'HMST'),
+('BIO102_03', 'BIO102_03', 'Lab', '16:00', '17:00', 'Friday', 'This introductory course to BioChemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice dissections, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'BIO102', NULL, 'HMST'),
+('CHEM101_01', 'CHEM101_01', 'Tutorial', '09:00', '10:00', 'Monday', 'This introductory course to Chemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice small scale chemical reactions (including nuclear fusion), conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'CHEM101', NULL, 'Helen McPherson Centre'),
+('CHEM101_02', 'CHEM101_02', 'Tutorial', '09:00', '10:00', 'Tuesday', 'This introductory course to Chemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice small scale chemical reactions (including nuclear fusion), conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'CHEM101', NULL, 'Helen McPherson Centre'),
+('CHEM101_03', 'CHEM101_03', 'Tutorial', '16:00', '17:00', 'Wednesday', 'This introductory course to Chemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice small scale chemical reactions (including nuclear fusion), conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'CHEM101', NULL, 'Helen McPherson Centre'),
+('ENG101_01', 'ENG101_01', 'Lab', '09:00', '10:00', 'Monday', 'This introductory course to English will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to study Shakespeare and Dostroyevsky, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'ENG101', NULL, 'Ratus 04'),
+('ENG101_02', 'ENG101_02', 'Lab', '10:00', '12:00', 'Tuesday', 'This introductory course to English will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to study Shakespeare and Dostroyevsky, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'ENG101', NULL, 'Ratus 04'),
+('ENG101_03', 'ENG101_03', 'Lab', '14:00', ' 15:00', 'Wednesday', 'This introductory course to English will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to study Shakespeare and Dostroyevsky, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.', 'ENG101', NULL, 'Ratus 04');
+
 
 -- --------------------------------------------------------
 
@@ -99,8 +100,9 @@ CREATE TABLE `courses` (
 --
 
 INSERT INTO `courses` (`courseCode`, `courseName`, `prerequisites`, `coordinatorID`, `course_description`) VALUES
-('BA-2023', 'Bachelor of Arts', NULL, '10001', 'Test 1'),
-('BSc-2023', 'Bachelor of Science', NULL, '10002', 'Test 2');
+('BA-2023', 'Bachelor of Arts', NULL, '10001', 'The Bachelor of Arts requires an ATAR of 75.0 or higher in order to gain admission, or proven acadademic capability. Students can expect to learn the intricaies of the Arts in their chosen discipline'),
+('BSc-2023', 'Bachelor of Science', NULL, '10002', 'The Bachelor of Science requires an ATAR of 75.0 or higher in order to gain admission, or proven acadademic capability. Students can expect to learn the intricaies of Science in their chosen discipline');
+
 
 -- --------------------------------------------------------
 
@@ -209,19 +211,18 @@ CREATE TABLE `systemuser` (
 --
 
 INSERT INTO `systemuser` (`userID`, `username`, `title`, `userRole`, `givenName`, `familyName`, `employmentStatus`, `contractType`, `studentNo`, `contactNo`, `citizenship`, `indigenousStatus`, `hoursAvailable`, `dob`, `salary`, `wholeAddress`, `gender`) VALUES
-('10001', 'jane.smith@gmail.com', 'Ms.', 'staff', 'Jane', 'Smith', 'active', 'Full-time', NULL, 444444444, 'AUS', 'Non-Indigenous', 40, '1990-05-01', '85000', '123 Main St, Anytown USA', ''),
-('10002', 'john.doe@gmail.com', 'Mr.', 'staff', 'John', 'Doe', 'active', 'Full-time', NULL, 433333333, 'AUS', 'Non-Indigenous', 40, '1985-10-15', '90000', '456 Oak St, Anytown USA', ''),
-('10003', 'sara.jones@gmail.com', 'Dr.', 'staff', 'Sara', 'Jones', 'active', 'Casual', NULL, 422222222, 'AUS', 'Non-Indigenous', 20, '1988-01-20', '40000', '789 Pine St, Anytown USA', ''),
-('10004', 'jack.smith@gmail.com', 'Mr.', 'applicant', 'Jack', 'Smith', 'inactive', NULL, '0411111111', 555, 'AUS', 'Non-Indigenous', 0, '1995-03-10', NULL, '234 Elm St, Anytown USA', ''),
-('10005', 'jane.doe@gmail.com', 'Ms.', 'applicant', 'Jane', 'Doe', 'inactive', NULL, '0400000000', 555, 'AUS', 'Indigenous', 0, '1998-12-25', NULL, '567 Maple St, Anytown USA', ''),
-('S090340897', 'keven@gmail.com', 'Mr', 'applicant', 'Moonman', 'asd', 'inactive', NULL, NULL, 444444444, 'asd', 'asd', 22, 'dob_test', 'salary_test', 'address_test', ''),
-('S095919464', 'masd@gmail.com', 'Mr', 'applicant', 'Moonman', 'asd', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', ''),
-('S276286160', 'mills@gmail.com', 'Mrs', 'applicant', 'millsm', 'mills', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', ''),
-('S538610296', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', ''),
-('S586797134', 'mills@gmail.com', 'Mrs', 'applicant', 'millsm', 'mills', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', ''),
-('S860033399', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', ''),
-('S938892456', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', '');
-
+('10001', 'jane.smith@gmail.com', 'Ms.', 'staff', 'Jane', 'Smith', 'active', 'Full-time', NULL, 444444444, 'AUS', 'Non-Indigenous', 40, '1990-05-01', '85000', '123 Main St, Anytown USA', 'female'),
+('10002', 'john.doe@gmail.com', 'Mr.', 'staff', 'John', 'Doe', 'active', 'Full-time', NULL, 433333333, 'AUS', 'Non-Indigenous', 40, '1985-10-15', '90000', '456 Oak St, Anytown USA', 'male'),
+('10003', 'sara.jones@gmail.com', 'Dr.', 'staff', 'Sara', 'Jones', 'active', 'Casual', NULL, 422222222, 'AUS', 'Non-Indigenous', 20, '1988-01-20', '40000', '789 Pine St, Anytown USA', 'female'),
+('10004', 'jack.smith@gmail.com', 'Mr.', 'applicant', 'Jack', 'Smith', 'inactive', NULL, '0411111111', 555, 'AUS', 'Non-Indigenous', 0, '1995-03-10', NULL, '234 Elm St, Anytown USA', 'male'),
+('10005', 'jane.doe@gmail.com', 'Ms.', 'applicant', 'Jane', 'Doe', 'inactive', NULL, '0400000000', 555, 'AUS', 'Indigenous', 0, '1998-12-25', NULL, '567 Maple St, Anytown USA', 'female'),
+('S090340897', 'keven@gmail.com', 'Mr', 'applicant', 'Moonman', 'asd', 'inactive', NULL, NULL, 444444444, 'asd', 'asd', 22, 'dob_test', 'salary_test', 'address_test', 'male'),
+('S095919464', 'masd@gmail.com', 'Mr', 'applicant', 'Moonman', 'asd', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', 'male'),
+('S276286160', 'mills@gmail.com', 'Mrs', 'applicant', 'millsm', 'mills', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', 'male'),
+('S538610296', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', 'male'),
+('S586797134', 'mills@gmail.com', 'Mrs', 'applicant', 'millsm', 'mills', 'inactive', NULL, NULL, 444444444, 'Australian Birth Certificate', 'Non-Indigenous', 24, 'dob_test', 'salary_test', 'address_test', 'male'),
+('S860033399', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', 'male'),
+('S938892456', 'hippo@gmail.com', 'Mr', 'applicant', 'asd', 'asd', 'inactive', NULL, NULL, 444444444, 'aussie', 'Non-Indigenous', 25, 'dob_test', 'salary_test', 'address_test', 'male');
 -- --------------------------------------------------------
 
 --
@@ -241,9 +242,9 @@ CREATE TABLE `unit` (
 --
 
 INSERT INTO `unit` (`unitCode`, `unitName`, `vacancyStatus`, `courseCode`, `unit_description`) VALUES
-('BIO102', 'Biology 102', 'true', 'BSc-2023', 'Test 2'),
-('CHEM101', 'Chemistry 102', 'false', 'BSc-2023', 'Test 3'),
-('ENG101', 'English 101', 'true', 'BA-2023', 'Test 1');
+('BIO102', 'Biology 102', 'true', 'BSc-2023', 'This introductory course to BioChemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice dissections, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.'),
+('CHEM101', 'Chemistry 102', 'false', 'BSc-2023', 'This introductory course to Chemistry will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to practice small scale chemical reactions (including nuclear fusion), conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.'),
+('ENG101', 'English 101', 'true', 'BA-2023', 'This introductory course to English will feature an introduction to key concepts and learning areas that will be assessed throughout the semester. Students can expect to study Shakespeare and Dostroyevsky, conduct research and create scholarly articles. Attendance to all lectures and classes is mandatory.');
 
 --
 -- Indexes for dumped tables

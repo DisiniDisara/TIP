@@ -265,4 +265,43 @@ function process_applicant_resume() {
     }
 }
 
+function generateDropDownTimes($day, $startEnd){
+echo "<select name ='$day$startEnd' id='$day$startEnd'>
+<option value = '08:00'>08:00</option>
+<option value = '08:30'>08:30</option>
+<option value = '09:00'>09:00</option>
+<option value = '09:30'>09:30</option>
+<option value = '10:00'>10:00</option>
+<option value = '10:30'>10:30</option>
+<option value = '11:00'>11:00</option>
+<option value = '11:30'>11:30</option>
+<option value = '12:00'>12:00</option>
+<option value = '12:30'>12:30</option>
+<option value = '13:00'>13:00</option>
+<option value = '13:30'>13:30</option>
+<option value = '14:00'>14:00</option>
+<option value = '14:30'>14:30</option>
+<option value = '15:00'>15:00</option>
+<option value = '15:30'>15:30</option>
+<option value = '16:00'>16:00</option>
+<option value = '16:30'>16:30</option>
+<option value = '17:00'>17:00</option>
+</select>";}
+
+function generateAvailType($day, $Avail){
+    echo "<select name ='$day$Avail' id ='$day$Avail'>
+    <option value =  'available'>Available</option>
+    <option value = 'unavailable'>Unvailable</option>
+    </select>";
+}
+
+function generateAvailDay($day, $Avail){
+    echo "<select name ='$day$Avail' id ='$day$Avail'>
+    <option value =  'available'>Available</option>
+    <option value = 'unavailable'>Unvailable</option>
+    </select>";
+}
+
+?>
+
 ?>

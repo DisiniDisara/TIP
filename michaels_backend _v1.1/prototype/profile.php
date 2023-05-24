@@ -58,8 +58,24 @@
           </td>
         </tr>
         HTML;
+        $IDforTable = $row['userID'];
 
         echo $details;
+      ?>
+
+      <?php 
+      // Code to show timetable of availability
+      require 'generateTimeTable.php';
+
+      $userAvailQuery = "SELECT * FROM availability WHERE userID = '$IDforTable'";
+      $userAvailType = "SELECT availabilityType FROM availability WHERE userID='$applicantID'";
+      
+      $result1 = $mysqli->query($userAvailQuery);
+      $result2 = $mysqli->query($userAvailType);
+      if ($result1->num_rows > 0) {
+          $timetable = generateAvailabilityTable($IDforTable, $result1, $result2);
+          echo $timetable;
+      }
       ?>
       <?php
           if ($_SESSION['userRole']==='applicant'){
