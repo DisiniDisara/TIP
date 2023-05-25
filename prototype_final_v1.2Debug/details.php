@@ -20,7 +20,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-  <link rel="stylesheet" href="style/details.css">          
+  <link rel="stylesheet" href="style/details.css">    
+  <script src="scripts/validate.js"></script>      
   <title>Details</title>
 </head>
 <body>
@@ -85,7 +86,7 @@ HTML;
         <label for="qualification">Qualifications:</label>
         <input style="margin-left:30px" type="text" id="qualification" name="qualification" placeholder="Qualifications" required>
 
-
+        <p id = "errorCode"></p>
         <input class="button" type="submit" value="Submit">
     </form>
     <button class="button" onclick="window.location.href='profile.php'">Cancel</button>

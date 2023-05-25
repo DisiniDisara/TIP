@@ -26,6 +26,7 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="style/account.css">
+    <script src="scripts/validate.js"></script>
 <title>Details</title>
 </head>
 <body>
@@ -124,7 +125,7 @@ HTML;
                                 <div class="invalid-feedback">You must check the box.</div>
                             </label>
                         </div>
-
+                        <p id = "errorCode"></p>
                         <input type="submit" class="butt" value="CREATE ACCOUNT">
 
                     </form>
