@@ -47,10 +47,10 @@
 
         $preferencesTable = generatePrefClassTable($applicantID, $result, $result2, $edit=false, $mainColor='lightblue');
 
-        echo "<h3>{$unitCode} Class Preferences View</h3>";
+        echo "<h3>{$unitCode} Class Preferences</h3>";
 
         echo <<<TABLE
-            <p>Class preferences for applicant {$givenName} {$familyName} {$applicantID} in unit {$unitCode}:</p>
+            <p>{$givenName} {$familyName} ({$applicantID}) preferences for {$unitCode}</p>
             {$preferencesTable}
 TABLE;
 
