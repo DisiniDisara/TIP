@@ -48,7 +48,17 @@
 HTML;
 
         } else {
-            echo '<p>You are not yet allocated.</p>';
+            echo <<<HTML
+            <div class="container my-5">
+                <div class="d-flex align-items-center align-self-center">
+                    <div class="container-fluid d-flex justify-content-center">
+                        <div class="card p-4 border-light">
+                            <h3 class="text-center">You have no allocations.</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+HTML;
         }
         
     ?>
