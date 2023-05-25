@@ -75,7 +75,7 @@ function generateTimeTable(
     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
     // Start of generating timetable html
-    $TIMETABLE .= "<table style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
+    $TIMETABLE .= "<table class='table' style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
     "<tr><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
 
     // Add day in header
@@ -258,8 +258,8 @@ HTML;
     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
     // Start of generating timetable html
-    $TIMETABLE .= "<table style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
-    "<tr><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
+    $TIMETABLE .= "<table class='table' style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
+    "<tr scope='row'><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
 
     // Add day in header
     foreach ($days as $day) {
@@ -268,7 +268,7 @@ HTML;
 
     // Go through timetable array and add info to td tag
     foreach ($timetable as $row) {
-        $TIMETABLE .= "<tr>";
+        $TIMETABLE .= "<tr scope='row'>";
         foreach ($row as $cell) {
 
             $TIMETABLE .= "<td style='border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>" . $cell . "</td>";
@@ -430,8 +430,8 @@ HTML;
     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
     // Start of generating timetable html
-    $TIMETABLE .= "<table style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
-    "<tr><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
+    $TIMETABLE .= "<table class='table' style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
+    "<tr  scope='row'><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
 
     // Add day in header
     foreach ($days as $day) {
@@ -440,7 +440,7 @@ HTML;
 
     // Go through timetable array and add info to td tag
     foreach ($timetable as $row) {
-        $TIMETABLE .= "<tr>";
+        $TIMETABLE .= "<tr scope='row'>";
         foreach ($row as $cell) {
 
             $TIMETABLE .= "<td style='border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>" . $cell . "</td>";
@@ -485,11 +485,11 @@ function generateAvailabilityTable(
 
         if (($availabilityType) == "available") {
             $color = 'dodgerblue';
-            $start_info = "<div class='class-block' style='background-color: $color; padding:0; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Available</div>";
+            $start_info = "<div class='class-block' style='background-color: $color; padding: 5px; margin: 0; height: 150%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Available</div>";
 
         } else {
             $color = 'tomato';
-            $start_info = "<div class='class-block' style='background-color: $color; padding:0; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Unavailable</div>";
+            $start_info = "<div class='class-block' style='background-color: $color; padding:5px; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Unavailable</div>";
         }
 
         $middle_info = "<div class='class-block' style='background-color: $color; color: $color; padding:0; margin:0; height:100%;'>' '</div>";
@@ -522,20 +522,20 @@ function generateAvailabilityTable(
     $days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
     // Start of generating timetable html
-    $TIMETABLE .= "<table style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
-        "<tr><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
+    $TIMETABLE .= "<table class='table' >" . PHP_EOL .
+        "<tr scope='row'><th>Time</th>";
 
     // Add day in header
     foreach ($days as $day) {
-        $TIMETABLE .= "<th style='text-align: center; border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>$day</th>";
+        $TIMETABLE .= "<th >$day</th>";
     }
 
     // Go through timetable array and add info to td tag
     foreach ($timetable as $row) {
-        $TIMETABLE .= "<tr>";
+        $TIMETABLE .= "<tr scope='row'>";
         foreach ($row as $cell) {
 
-            $TIMETABLE .= "<td style='border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>" . $cell . "</td>";
+            $TIMETABLE .= "<td>" . $cell . "</td>";
         }
         $TIMETABLE .= "</tr>";
     }

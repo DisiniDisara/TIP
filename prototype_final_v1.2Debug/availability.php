@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-    <link rel="stylesheet" href="style/class_sessions.css">    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="style/class_sessions.css"> 
 
     <?php
     session_start();
@@ -30,7 +28,7 @@ EOD;
     // Generate the navigation menu
     $nav = generateNav();
     echo $nav;
-    echo $userID;
+    //echo $userID;
 
     // Variables for Form
     $mon = "Monday";
@@ -148,42 +146,80 @@ EOD;
     $result2 = $mysqli->query($userAvailType);
     if ($result1->num_rows > 0) {
         $timetable = generateAvailabilityTable($userID, $result1, $result2);
-        echo $timetable;
+        echo <<< EOD
+        <div class="container my-5">
+            <div class="d-flex align-items-center align-self-center">
+                <div class="container-fluid d-flex justify-content-center">
+                    <div class="card p-4 border-light">
+                    $timetable
+                    </div>
+                </div>
+            </div>
+        </div>
+            
+EOD;
     }
     ?>
 
-    
+<div class="container my-5">
+    <div class="d-flex align-items-center align-self-center">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="card p-4 border-light">
+                <h3 class="text-center mb-3">Please Enter Your Availability</h3>    
+                    <form method="post" action="availability.php">
+                    <table class="table">
+                        <tbody>
 
-    <form method="post" action="availability.php">
-        <p>Monday Start Time:
-            <?php generateDropDownTimes($mon, $start) ?>End Time:
-            <?php generateDropDownTimes($mon, $end) ?>Type:
-            <?php generateAvailType($mon, $avail) ?>
-        </p>
-        <p>Tuesday Start Time:
-            <?php generateDropDownTimes($tues, $start) ?>End Time:
-            <?php generateDropDownTimes($tues, $end) ?>Type:
-            <?php generateAvailType($tues, $avail) ?>
-        </p>
-        <p>Wednesday Start Time:
-            <?php generateDropDownTimes($wed, $start) ?>End Time:
-            <?php generateDropDownTimes($wed, $end) ?>Type:
-            <?php generateAvailType($wed, $avail) ?>
-        </p>
-        <p>Thursday Start Time:
-            <?php generateDropDownTimes($thurs, $start) ?>End Time:
-            <?php generateDropDownTimes($thurs, $end) ?>Type:
-            <?php generateAvailType($thurs, $avail) ?>
-        </p>
-        <p>Friday Start Time:
-            <?php generateDropDownTimes($fri, $start) ?>End Time:
-            <?php generateDropDownTimes($fri, $end) ?>Type:
-            <?php generateAvailType($fri, $avail) ?>
-        </p>
-        <input type="submit"  name="submit"></input>
-    </form>
-
+                        <tr scope="row">
+                            <td>Monday Start Time:
+                            <?php generateDropDownTimes($mon, $start) ?>
+                            <td>End Time:
+                            <?php generateDropDownTimes($mon, $end) ?></td>
+                            <td>Type:
+                            <?php generateAvailType($mon, $avail) ?></td>
+                        </tr>
+                        <tr scope="row">
+                            <td>Tuesday Start Time:
+                            <?php generateDropDownTimes($tues, $start) ?></td>
+                            <td>End Time:
+                            <?php generateDropDownTimes($tues, $end) ?></td>
+                            <td>Type:
+                            <?php generateAvailType($tues, $avail) ?></td>
+                        </tr>
+                        <tr scope="row">
+                            <td>Wednesday Start Time:
+                            <?php generateDropDownTimes($wed, $start) ?></td>
+                            <td>End Time:
+                            <?php generateDropDownTimes($wed, $end) ?></td>
+                            <td>Type:
+                            <?php generateAvailType($wed, $avail) ?></td>                        
+                        </tr>
+                        <tr scope="row">
+                            <td>Thursday Start Time:
+                            <?php generateDropDownTimes($thurs, $start) ?></td>
+                            <td>End Time:
+                            <?php generateDropDownTimes($thurs, $end) ?></td>
+                            <td>Type:
+                            <?php generateAvailType($thurs, $avail) ?></td>
+                        </tr>
+                        <tr scope="row">
+                            <td>Friday Start Time:
+                            <?php generateDropDownTimes($fri, $start) ?></td>
+                            <td>End Time:
+                            <?php generateDropDownTimes($fri, $end) ?></td>
+                            <td>Type:
+                            <?php generateAvailType($fri, $avail) ?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                        <input type="submit"  name="submit" value="Submit"></input>
+                    </form>
+            </div>
+        </div>
+    </div>
+</div>
     
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script> 
 
 </body>
 

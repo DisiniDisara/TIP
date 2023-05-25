@@ -158,7 +158,7 @@
 
         <?php
           if ($_SESSION['userRole']==='applicant'){
-              echo '<div>
+              echo '<div class="d-flex mb-5">
               <a href="details.php?applicantID=<?php echo $applicantID; ?>&edit=1">Edit Details</a>
               </div>';
           }
@@ -173,7 +173,7 @@
       $result2 = $mysqli->query($userAvailType);
       if ($result1->num_rows > 0) {
           $timetable = generateAvailabilityTable($IDforTable, $result1, $result2);
-          echo $timetable;
+          echo '<h3 class="text-center mb-3">Availability</h3>',$timetable;
       }
       ?>
         
