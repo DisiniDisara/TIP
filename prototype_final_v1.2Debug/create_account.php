@@ -113,6 +113,11 @@ HTML;
                         </div>
 
                         <div class="form-group">
+                            <i class="fas fa-graduation-cap"></i>
+                            <input class="myInput" type="text" id="qualification" name="qualification" placeholder="Qualifications" required>
+                        </div>
+
+                        <div class="form-group">
                             <label>
                                 <input id="check_1" name="check_1" type="checkbox" required><small> I read and agree to
                                     Terms & Conditions</small></input>
