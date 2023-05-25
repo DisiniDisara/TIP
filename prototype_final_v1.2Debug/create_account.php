@@ -75,10 +75,10 @@ HTML;
                             <input class="myInput" type="text" placeholder="Last Name" id="familyName" name="familyName" required maxlength="255">
                         </div>
 
-                        <div class="form-group">
+                        <!-- <div class="form-group">
                             <i class="fas fa-envelope"></i>
                             <input class="myInput" placeholder="Email" type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="255">
-                        </div>
+                        </div> -->
 
                         <div class="form-group">
                             <i class="fas fa-mobile"></i>
@@ -110,6 +110,11 @@ HTML;
                         <div class="form-group">
                             <i class="fas fa-book"></i>
                             <input class="myInput" type="number" id="hoursAvailable" name="hoursAvailable" placeholder="Hours Available" required>
+                        </div>
+
+                        <div class="form-group">
+                            <i class="fas fa-graduation-cap"></i>
+                            <input class="myInput" type="text" id="qualification" name="qualification" placeholder="Qualifications" required>
                         </div>
 
                         <div class="form-group">

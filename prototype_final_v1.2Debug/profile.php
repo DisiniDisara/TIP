@@ -37,7 +37,7 @@
             <div class="container-fluid d-flex justify-content-center">
                 <div class="card p-4 border-light">
     <h1 class="text-center mb-5">User Details: <?php echo $_SESSION['givenName']; ?> </h1>
-    <table class="table">
+    <table class="table table-responsive-md">
       <?php
         require 'connections.php';
 
@@ -97,6 +97,10 @@
           <tr>
               <th scope="row">Hours Available:</th>
               <td><?= "{$row['hoursAvailable']}" ?></td>
+          </tr>
+          <tr>
+              <th scope="row">Qualifications:</th>
+              <!-- <td><?= "{$row['']}" ?></td> -->
           </tr>
           </table>
           
