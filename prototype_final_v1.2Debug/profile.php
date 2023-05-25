@@ -98,6 +98,10 @@
               <th scope="row">Hours Available:</th>
               <td><?= "{$row['hoursAvailable']}" ?></td>
           </tr>
+          <tr>
+              <th scope="row">Qualifications:</th>
+              <!-- <td><?= "{$row['']}" ?></td> -->
+          </tr>
           </table>
           
       <?php
