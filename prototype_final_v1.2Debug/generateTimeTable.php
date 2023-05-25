@@ -271,7 +271,7 @@ HTML;
         $TIMETABLE .= "<tr scope='row'>";
         foreach ($row as $cell) {
 
-            $TIMETABLE .= "<td style='border: 1px solid darkblue; padding:0; margin:0; height: 1.5rem;'>" . $cell . "</td>";
+            $TIMETABLE .= "<td style='border: 1px solid darkblue; padding: 10px; margin:0; height: 1.5rem;'>" . $cell . "</td>";
         }
         $TIMETABLE .= "</tr>";
     }
@@ -431,7 +431,7 @@ HTML;
 
     // Start of generating timetable html
     $TIMETABLE .= "<table class='table' style='border-collapse: collapse; border-color: red; border: 1px solid darkblue;'>" . PHP_EOL .
-    "<tr  scope='row'><th style='border: 1px solid darkblue; padding:0; margin:0;'>Time</th>";
+    "<tr  scope='row'><th style='padding:3px; margin:5px;'>Time</th>";
 
     // Add day in header
     foreach ($days as $day) {
@@ -485,15 +485,15 @@ function generateAvailabilityTable(
 
         if (($availabilityType) == "available") {
             $color = 'dodgerblue';
-            $start_info = "<div class='class-block' style='background-color: $color; padding: 5px; margin: 0; height: 150%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Available</div>";
+            $start_info = "<div class='class-block' style='background-color: $color; padding: 3px; margin: 0; height: 150%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Available</div>";
 
         } else {
             $color = 'tomato';
-            $start_info = "<div class='class-block' style='background-color: $color; padding:5px; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Unavailable</div>";
+            $start_info = "<div class='class-block' style='background-color: $color; padding: 3px; margin:0; height: 100%;'><div style='margin: 0; padding:0; display: flex; align-items: center;'>Unavailable</div>";
         }
 
-        $middle_info = "<div class='class-block' style='background-color: $color; color: $color; padding:0; margin:0; height:100%;'>' '</div>";
-        $end_info = "<div class='class-block' style='background-color: $color; color: $color; padding: 0; margin:0; height: 100%;'>' '</div>";
+        $middle_info = "<div class='class-block' style='background-color: $color; color: $color; padding: 3px;; margin:0; height:100%;'>' '</div>";
+        $end_info = "<div class='class-block' style='background-color: $color; color: $color; padding: 3px; margin:0; height: 100%;'>' '</div>";
 
         // Time blocks from sart to end times, inclusively
         $times = getStartToEndTimes($a_startTime, $a_endTime);
@@ -535,7 +535,7 @@ function generateAvailabilityTable(
         $TIMETABLE .= "<tr scope='row'>";
         foreach ($row as $cell) {
 
-            $TIMETABLE .= "<td>" . $cell . "</td>";
+            $TIMETABLE .= "<td style='padding: 0;'>" . $cell . "</td>";
         }
         $TIMETABLE .= "</tr>";
     }
