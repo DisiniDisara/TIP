@@ -100,7 +100,7 @@
           </tr>
           <tr>
               <th scope="row">Qualifications:</th>
-              <!-- <td><?= "{$row['']}" ?></td> -->
+              <!-- <td><?= "{$row['qualification']}" ?></td> -->
           </tr>
           </table>
           
@@ -155,7 +155,7 @@
               </tr>
               <tr>
                   <th scope="row">Qualifications:</th>
-                  <td><?= "{$row['qualifications']}" ?></td>
+                  <td><?= "{$row['qualification']}" ?></td>
               </tr>
               </table>
         <?php }}?>

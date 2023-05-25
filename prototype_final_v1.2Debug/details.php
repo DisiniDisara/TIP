@@ -67,9 +67,6 @@ HTML;
         <label for="familyName">Family Name:</label>
         <input style="margin-left:45px;" type="text" id="familyName" name="familyName" required maxlength="255" value="<?= "{$row['familyName']}" ?>"><br>
 
-        <label for="email">Email:</label>
-        <input style="margin-left:100px;" type="email" id="email" name="email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" maxlength="255" value="<?= "{$row['username']}" ?>"><br>
-
         <label for="contactNo">Contact Number:</label>
         <input style="margin-left:20px;" type="tel" id="contactNo" name="contactNo" required maxlength="10" value="<?= "{$row['contactNo']}" ?>"><br>
 
@@ -84,6 +81,10 @@ HTML;
 
         <label for="hoursAvailable">Hours Available:</label>
         <input style="margin-left:25px;" type="number" id="hoursAvailable" name="hoursAvailable" required value="<?= "{$row['hoursAvailable']}" ?>"><br>
+
+        <label for="qualification">Qualifications:</label>
+        <input style="margin-left:30px" type="text" id="qualification" name="qualification" placeholder="Qualifications" required>
+
 
         <input class="button" type="submit" value="Submit">
     </form>
