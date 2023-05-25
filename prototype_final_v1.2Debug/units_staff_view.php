@@ -90,7 +90,7 @@ TABLE;
     $TABLE_HTML =  <<<EOD
 
                     <h3 class="text-center mb-5">Available Units</h3>
-                    <table class="table">
+                    <table class="table table-responsive-md">
                         <thead>
                             <tr>
                                 <th>Id</th>
