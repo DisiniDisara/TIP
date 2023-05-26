@@ -1,0 +1,142 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+  body {
+    background: #fbf3ff;
+  } 
+
+  .text-center2{
+    position: center;
+    font-size: 50px;
+  }
+
+  .container3{
+    width: 100%;
+    height: 30%;
+    margin: auto;
+    display: flex;
+  }
+  .container {
+    position: absolute;
+    max-width: 800px;
+    height: 700px;
+    margin: auto;
+    top: 60.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } 
+  .form-control_2{
+    width: 200px;
+    position: absolute;
+    display: flex;
+  }
+  .container_2{
+    position: absolute;
+    max-width: 800px;
+    height: 100px;
+    border-radius: 25px;
+    margin: auto;
+    top: 60.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } 
+
+  .myLeftCtn {
+    align-items: center;
+    background: #fff;
+    border-radius: 25px;
+    height: 100%;
+    padding: 25px;
+    padding-left: 50px;
+  }
+  .myLeftCtn header {
+    color: #a45252;
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+  .row{
+  height: 100%;
+  } 
+  .myCard {
+    background: #fff;
+    height: 100%;
+    border-radius: 25px;
+    -webkit-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 10px 40px -10px rgba(0, 0, 0, 0.7);
+  } 
+  .myRightCtn header {
+    color: #000;
+    font-size: 44px;
+  }
+  .box {
+    position: relative;
+    margin: 20px;
+    margin-bottom: 100px;
+    font-size: 40px;
+  } 
+  .myLeftCtn .myInput {
+    width: 230px;
+    border-radius: 25px;
+    padding: 10px;
+    padding-left: 50px;
+    border: none;
+    -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  }
+  .myLeftCtn .myInput:focus {
+    outline: none;
+  } 
+  .myForm {
+    margin-top: 50px;
+  } 
+  .myLeftCtn .butt {
+    background: linear-gradient(45deg, #482F72, #a45252);
+    color: #000;
+    width: 230px;
+    border: none;
+    border-radius: 25px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 10px 41px -11px rgba(0, 0, 0, 0.7);
+  } 
+  .image{
+    width: 200px;
+    height: 20%;
+  }
+  .myLeftCtn .butt:hover {
+    background: linear-gradient(45deg, #482F72, #a45252);
+  }
+  .myLeftCtn .butt:focus {
+    outline: none;
+  } 
+  .myLeftCtn .fas {
+    position: relative;
+    color: #a45252;
+    left: 36px;
+  } 
+  .butt_out {
+    background: transparent;
+    color: #fff;
+    width: 120px;
+    border: 2px solid#fff;
+    border-radius: 25px;
+    padding: 10px;
+    -webkit-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+    box-shadow: 0px 10px 49px -14px rgba(0, 0, 0, 0.7);
+  } 
+  .butt_out:hover {
+    border: 2px solid#eecbff;
+  } 
+  .butt_out:focus {
+    outline: none;
+  }
+  
+  
+  
