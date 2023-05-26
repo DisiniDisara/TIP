@@ -48,6 +48,7 @@ function createAccountValidation(){
     
     if (errMsg != "") {
         if (result == false){
+        errMsg += "Error: Last update attempt did not succeed. Details unchanged.\n"
         document.getElementById("errorCode").innerHTML = errMsg
         var error = document.getElementById("errorCodeHidden")
         error.setAttribute("value", errMsg)
@@ -111,6 +112,7 @@ function validateAvailability(){
 
     if (errMsg != "") {
         result = false
+        errMsg += "Error: Last update attempt did not succeed. Details unchanged.\n"
         document.getElementById("errorCode").innerHTML = errMsg
         var error = document.getElementById("errorCodeHidden")
         error.setAttribute("value", errMsg)
