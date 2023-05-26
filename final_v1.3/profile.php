@@ -8,6 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="style/class_sessions.css">    
+  <script src="scripts/validate.js"></script>      
 
   <?php session_start(); 
   require_once('utilities.php');
@@ -23,6 +24,12 @@
     $givenName = $_SESSION['givenName'];
 
   }
+
+  if (isset($_POST["errorCodeHidden"])){
+    $errorCodeHidden = $_POST["errorCodeHidden"];}
+  else {
+    $errorCodeHidden = "";
+} 
   ?>
 
 </head>
@@ -103,13 +110,20 @@
               <td><?= "{$row['indigenousStatus']}" ?></td>
           </tr>
           <tr>
+              <th scope="row">Hours Available:</th>
+              <td><?= "{$row['hoursAvailable']}" ?></td>
+          </tr>
+          <tr>
               <th scope="row">Qualifications:</th>
               <td><?= "{$qualification}" ?></td>
           </tr>
           </table>
          
        <?php }        //Start of new php
-       
+        if (isset($_SESSION['errorCodeHidden'])){
+        $errorCodeHidden = $_SESSION["errorCodeHidden"];
+        echo $errorCodeHidden;
+                }   
        //and adding edditing button for applicant
        if ($_SESSION['userRole']==='applicant'){
         echo '<div class="d-flex">

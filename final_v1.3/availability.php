@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
     <link rel="stylesheet" href="style/class_sessions.css"> 
+    <script src="scripts/validate.js"></script>
+    <title>Availability</title>
 
     <?php
     session_start();
@@ -39,6 +41,12 @@ EOD;
     $start = "Start";
     $end = "End";
     $avail = "Avail";
+    if (isset($_POST["errorCodeHidden"])) {
+        $errorCodeHidden = $_POST["errorCodeHidden"];
+    } else {
+        $errorCodeHidden = "";
+    }
+
 
     if (isset($_POST["submit"])) {
         if (isset($_POST["MondayStart"])) {
@@ -52,10 +60,12 @@ EOD;
                     $check = "SELECT userID, a_day FROM availability WHERE userID='$userID' AND a_day ='$mon'";
                     $result = $mysqli->query($check);
                     if ($result->num_rows == 1) {
-                        $mysqli->query($update);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($update);}
                     }
                     if ($result->num_rows == 0) {
-                        $mysqli->query($insert);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($insert);}
                     }
                 }
             }
@@ -71,10 +81,12 @@ EOD;
                     $check = "SELECT userID, a_day FROM availability WHERE userID='$userID' AND a_day ='$tues'";
                     $result = $mysqli->query($check);
                     if ($result->num_rows == 1) {
-                        $mysqli->query($update);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($update);}
                     }
                     if ($result->num_rows == 0) {
-                        $mysqli->query($insert);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($insert);}
                     }
                 }
             }
@@ -90,10 +102,12 @@ EOD;
                     $check = "SELECT userID, a_day FROM availability WHERE userID='$userID' AND a_day ='$wed'";
                     $result = $mysqli->query($check);
                     if ($result->num_rows == 1) {
-                        $mysqli->query($update);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($update);}
                     }
                     if ($result->num_rows == 0) {
-                        $mysqli->query($insert);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($insert);}
                     }
                 }
             }
@@ -109,10 +123,12 @@ EOD;
                     $check = "SELECT userID, a_day FROM availability WHERE userID='$userID' AND a_day ='$thurs'";
                     $result = $mysqli->query($check);
                     if ($result->num_rows == 1) {
-                        $mysqli->query($update);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($update);}
                     }
                     if ($result->num_rows == 0) {
-                        $mysqli->query($insert);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($insert);}
                     }
                 }
             }
@@ -128,10 +144,12 @@ EOD;
                     $check = "SELECT userID, a_day FROM availability WHERE userID='$userID' AND a_day ='$fri'";
                     $result = $mysqli->query($check);
                     if ($result->num_rows == 1) {
-                        $mysqli->query($update);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($update);}
                     }
                     if ($result->num_rows == 0) {
-                        $mysqli->query($insert);
+                        if ($errorCodeHidden == "") {
+                        $mysqli->query($insert);}
                     }
                 }
             }
@@ -168,7 +186,7 @@ EOD;
             <div class="card p-4 border-light">
                 <h3 class="text-center mb-3">Please Enter Your Availability</h3>  
                 <p>For any day, please enter a block of time when you are available or unavailable.</p>  
-                    <form method="post" action="availability.php">
+                    <form method="post" id = "availabilityform" action="availability.php">
                     <table class="table">
                         <tbody>
 
@@ -213,7 +231,9 @@ EOD;
                             <?php generateAvailType($fri, $avail) ?></td>
                         </tr>
                         </tbody>
+                        <input type="hidden" id="errorCodeHidden" name="errorCodeHidden" value="">
                     </table>
+                    <p id="errorCode"><?php echo $errorCodeHidden?></p>
                         <input type="submit"  name="submit" value="Submit"></input>
                     </form>
             </div>

@@ -54,28 +54,42 @@ function generate_applicantID(){
 
 function process_applicant_details($first_detail=false) {
     echo "<p>Inside process</p>";
-
-    $title = $_POST['title'];
+    if (isset($_POST["title"])){
+    $title = $_POST['title'];}
     // $email = $_POST['email'];
-    $givenName = $_POST['givenName'];
-    $familyName = $_POST['familyName'];
-    $employmentStatus = $_POST['employmentStatus'];
-    $contactNo = $_POST['contactNo'];
-    $citizenship = $_POST['citizenship'];
-    $indigenousStatus = $_POST['indigenousStatus'];
-    $hoursAvailable = 0; //$_POST['hoursAvailable']; Need to be an integer!
-    $qualification = $_POST['qualification'];
+    if (isset($_POST["givenName"])){
+    $givenName = $_POST['givenName'];}
+    if (isset($_POST["familyName"])){
+    $familyName = $_POST['familyName'];}
+    if (isset($_POST["employmentStatus"])){
+    $employmentStatus = $_POST['employmentStatus'];}
+    if (isset($_POST["contactNo"])){
+    $contactNo = $_POST['contactNo'];}
+    if (isset($_POST["citizenship"])){
+    $citizenship = $_POST['citizenship'];}
+    if (isset($_POST["indigenousStatus"])){
+    $indigenousStatus = $_POST['indigenousStatus'];}
+    if (isset($_POST["hoursAvailable"])){
+    $hoursAvailable = $_POST['hoursAvailable'];}
+    if (isset($_POST["qualification"])){
+    $qualification = $_POST['qualification'];}
     echo "<p>Grabbed all form data</p>";
 
-    if ($first_detail===true) {
-        // Connect to db [^] userID is not in applicant details yet
+    if (isset($_POST["errorCodeHidden"])) {
+        $errorCodeHidden = $_POST["errorCodeHidden"];
+    } else {
+        $errorCodeHidden = "";
+    }
+
+    if ($first_detail===true and $errorCodeHidden==="") {
+        // Connect to db
         require 'connections.php';
 
         $username = $_POST['username'];
         $password = $_POST['password'];
         // Generate unique applicantID by checking db
         $applicantID = generate_applicantID();
-        echo "<p>Generaetd id:  $applicantID</p>";
+        echo "<p>Generated id:  $applicantID</p>";
 
         // Insertion query
         $sql_query = "INSERT INTO systemUser (userID, username, title, userRole, givenName, familyName, wholeAddress, employmentStatus, contractType, studentNo, contactNo, citizenship, indigenousStatus, hoursAvailable, dob, salary, gender)
@@ -107,6 +121,7 @@ function process_applicant_details($first_detail=false) {
         $_SESSION['username'] = $username;
 
     } else {
+        if ($errorCodeHidden ===""){
         echo 'edit';
         $applicantID = $_SESSION['userID'];
         $username = $_SESSION['username'];
@@ -136,13 +151,18 @@ function process_applicant_details($first_detail=false) {
             WHERE userID = '$applicantID'";
 
         $stmt2 = $mysqli->prepare($sql_queryQual);
-        $stmt2->execute();
+        $stmt2->execute();}
+    
+        
+            
 
     }
 
 //   echo "<p>Processed nearly done</p>";
 
   $_SESSION['givenName'] = $givenName;
+  $_SESSION['errorCodeHidden'] = $errorCodeHidden;
+
 //   echo "<p>Processed DONE </p>";
 
   }

@@ -21,6 +21,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <link rel="stylesheet" href="style/details.css">          
+  <script src="scripts/validate.js"></script>      
   <title>Details</title>
 </head>
 <body>
@@ -56,7 +57,7 @@ HTML;
         $row2 = $result2->fetch_assoc();
     ?>
    
-    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id = "detailsform">
         <label for="title">Title:</label>
         <select style="margin-left:107px;" id="title" name="title" required>
             <option value="">--Please select--</option>
@@ -82,9 +83,21 @@ HTML;
 
         <label for="indigenousStatus">Indigenous Status:</label>
         <input style="margin-left:10px;" type="text" id="indigenousStatus" name="indigenousStatus" required maxlength="255" value="<?= "{$row['indigenousStatus']}" ?>"><br>
+      
+        <label for="hoursAvailable">Hours Available:</label>
+        <input style="margin-left:25px;" type="text" id="hoursAvailable" name="hoursAvailable" required value="<?= "{$row['hoursAvailable']}" ?>"><br>
 
         <label for="qualification">Qualification:</label>
         <input style="margin-left:10px;" type="text" id="qualification" name="qualification" required maxlength="255" value="<?= "{$row2['qualification']}" ?>"><br>
+        <p id = "errorCode"></p>
+        <input type="hidden" id="errorCodeHidden" name="errorCodeHidden" value="">
+        <?php 
+            if (isset($_POST["errorCodeHidden"])){
+                $errorCodeHidden = $_POST["errorCodeHidden"];
+                echo $errorCodeHidden;
+            }
+
+        ?>
 
         <input class="button" type="submit" value="Submit">
     </form>

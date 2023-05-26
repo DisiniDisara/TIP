@@ -6,8 +6,14 @@
     require 'connections.php';
     require_once('utilities.php');
 
+    if (isset($_POST["errorCodeHidden"])){
+        $errorCodeHidden = $_POST["errorCodeHidden"];
+    } else {
+        $errorCodeHidden = "";
+    }
+
     // check if form is submitted and call the function
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST' and $errorCodeHidden==="") {
         process_applicant_details($first_detail=true);
         $_SESSION['isLoggedIn'] = true;
         echo 'back to create_account';
@@ -27,7 +33,9 @@
         integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
         crossorigin="anonymous" />
     <link rel="stylesheet" href="style/account.css">
-<title>Details</title>
+    <script src="scripts/validate.js"></script>      
+
+<title>Create Account</title>
 </head>
 <body>
     <?php
@@ -44,11 +52,16 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="myLeftCtn">
-                    <form class="myForm text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                    <form class="myForm text-center" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" id= "createform">
                         <header>Create new account</header>
                         <?php
+                        if ($errorCodeHidden == ""){
                         $username = $_GET['username'];
-                        $password = $_GET['password'];
+                        $password = $_GET['password'];}
+                        else {
+                        $username = $_REQUEST['username'];
+                        $password = $_REQUEST['password'];
+                        }
                         echo <<<HTML
                         <p>Username: <strong>{$username}</strong><p>
 HTML;        
@@ -109,6 +122,11 @@ HTML;
                         </div>
 
                         <div class="form-group">
+                            <i class="fas fa-book"></i>
+                            <input class="myInput" type="number" id="hoursAvailable" name="hoursAvailable" placeholder="Hours Available" required>
+                        </div>
+
+                        <div class="form-group">
                             <i class="fas fa-graduation-cap"></i>
                             <input class="myInput" type="text" id="qualification" name="qualification" placeholder="Qualification" required>
                         </div>
@@ -120,7 +138,14 @@ HTML;
                                 <div class="invalid-feedback">You must check the box.</div>
                             </label>
                         </div>
-
+                        <p id = "errorCode"></p>
+                        <input type="hidden" id="errorCodeHidden" name="errorCodeHidden" value="">
+                        <?php 
+                         if (isset($_POST["errorCodeHidden"])){
+                             $errorCodeHidden = $_POST["errorCodeHidden"];
+                            echo $errorCodeHidden;
+                              }
+                              ?>
                         <input type="submit" class="butt" value="CREATE ACCOUNT">
 
                     </form>
